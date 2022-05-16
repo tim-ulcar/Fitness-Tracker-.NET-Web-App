@@ -1,0 +1,50 @@
+@model web.Models.Nutrition
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Nutrition</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="time" class="control-label"></label>
+                <input asp-for="time" class="form-control" />
+                <span asp-validation-for="time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="calories" class="control-label"></label>
+                <input asp-for="calories" class="form-control" />
+                <span asp-validation-for="calories" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="protein" class="control-label"></label>
+                <input asp-for="protein" class="form-control" />
+                <span asp-validation-for="protein" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="carbohydrates" class="control-label"></label>
+                <input asp-for="carbohydrates" class="form-control" />
+                <span asp-validation-for="carbohydrates" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fat" class="control-label"></label>
+                <input asp-for="fat" class="form-control" />
+                <span asp-validation-for="fat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,66 @@
+@model IEnumerable<web.Models.ExercisePerformed>
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.exerciseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reps)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    @if (await UserManager.GetUserAsync(User) == item.userId) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.exerciseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reps)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.exercisePerformedId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.exercisePerformedId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.exercisePerformedId">Delete</a>
+            </td>
+        </tr>
+    }
+            
+}
+    </tbody>
+</table>
